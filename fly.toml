@@ -1,0 +1,39 @@
+app="goohayee"
+primary_region = "yyz"
+
+[[mounts]]
+  source = "gotify_data"
+  destination = "/app/data"
+  processes = ["app"]
+
+[[services]]
+  # have to use 2525 otherwise will get an error
+  internal_port = 2525
+  protocol = "tcp"
+
+  # mapping these three ports ALL to internal 25
+  # https://community.fly.io/t/receiving-email-inbound-smtp/1033/24
+  [[services.ports]]
+    port = 25
+
+  [[services.ports]]
+    handlers = ["tls"]
+    port = 465
+
+  [[services.ports]]
+    port = 587
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 8080
+  processes = ["app"]
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
