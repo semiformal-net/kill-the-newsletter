@@ -5,6 +5,7 @@ primary_region = "yyz"
   source = "gotify_data"
   destination = "/app/data"
   processes = ["app"]
+  initial_size = '1gb'
 
 [[services]]
   # have to use 2525 otherwise will get an error
@@ -37,3 +38,6 @@ primary_region = "yyz"
     port = 443
     handlers = ["tls", "http"]
 
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = "256mb"

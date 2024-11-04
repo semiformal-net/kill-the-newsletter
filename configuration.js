@@ -8,8 +8,8 @@ module.exports = async (require) => {
     path.join(__dirname, "data")
   );
 
-  webApplication.set("url", "https://goohayee.fly.dev");
-  webApplication.set("email", "smtp://goohayee.fly.dev");
+  webApplication.set("url", "https://newsletter.rodeo");
+  webApplication.set("email", "smtp://newsletter.rodeo");
   webApplication.set("administrator", "mailto:kill-the-newsletter@semiformal.net");
 
 webApplication.listen(8080);
